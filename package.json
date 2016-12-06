@@ -1,0 +1,24 @@
+{
+  "name": "utils",
+  "version": "0.0.1",
+  "description": "The flex ui utils tools.",
+  "author": {
+    "name": "nuintun",
+    "email": "nuintun@qq.com"
+  },
+  "homepage": "https://flexui.github.io/utils",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/flexui/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flexui/utils/issues",
+    "email": "nuintun@qq.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "utils"
+  ],
+  "main": "utils.js",
+  "readmeFilename": "README.md"
+}
