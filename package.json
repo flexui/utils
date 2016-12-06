@@ -19,6 +19,6 @@
   "keywords": [
     "utils"
   ],
-  "main": "utils.js",
+  "jsnext:main": "utils.js",
   "readmeFilename": "README.md"
 }
