@@ -1,6 +1,8 @@
 import $ from 'jquery';
+// 类型判定接口
+import * as Is from './lib/is';
 
-// 导出类型判定接口
+// 公开接口
 export * from './lib/is';
 
 // jquery 对象
@@ -42,37 +44,46 @@ export function mix(target, seed, list, isWhite) {
       }
     }
   }
+
+  return target;
 }
+
+// setPrototypeOf
+var setPrototypeOf = Is.isNative(Object.setPrototypeOf) ? Object.setPrototypeOf : false;
 
 /**
  * 继承
  *
  * @export
- * @param {Class} ctor
- * @param {Class} superCtor
+ * @param {Class} subClass
+ * @param {Class} superClass
  * @param {Object} properties
- * @returns {ctor}
+ * @returns {subClass}
  */
-export function inherits(ctor, superCtor, properties) {
-  if (ctor.setPrototypeOf) {
-    ctor.setPrototypeOf(superCtor.prototype);
-  } else if (ctor.__proto__) {
-    ctor.__proto__ = superCtor.prototype;
-  } else {
-    // constructor
-    function Ctor() {}
+export function inherits(subClass, superClass, properties) {
+  var superPrototype = superClass.prototype;
 
-    // prototype
-    Ctor.prototype = superCtor.prototype;
-    ctor.prototype = new Ctor();
+  if (setPrototypeOf) {
+    setPrototypeOf(subClass.prototype, superPrototype);
+  } else {
+    // 中转空白类，可以减少内存占用
+    function T() {
+      // Empty constructor
+    }
+
+    // 原型属性继承
+    T.prototype = superPrototype;
+    // 初始化实例
+    subClass.prototype = new T();
   }
 
-  ctor.prototype.constructor = ctor;
-
   // 混合属性
-  mix(ctor, properties);
+  mix(subClass.prototype, properties);
 
-  return ctor;
+  // 设置构造函数
+  subClass.prototype.constructor = subClass;
+
+  return subClass;
 }
 
 /**
