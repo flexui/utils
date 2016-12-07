@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 // 导出类型判定接口
 export * from './lib/is';
 
