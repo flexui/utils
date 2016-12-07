@@ -78,7 +78,7 @@ export function inherits(subClass, superClass, properties) {
   }
 
   // 混合属性
-  mix(subClass.prototype, properties);
+  properties && mix(subClass.prototype, properties);
 
   // 设置构造函数
   subClass.prototype.constructor = subClass;
