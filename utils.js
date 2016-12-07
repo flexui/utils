@@ -1,24 +1,38 @@
 // 导出类型判定接口
 export * from './lib/is';
 
+// jquery 对象
+export var win = $(window);
+export var doc = $(document);
+
 /**
  * 属性拷贝
  *
  * @export
  * @param {Object} target 目标对象
  * @param {Object} seed 继承对象
- * @param {Array} whiteList 白名单
+ * @param {Array} list 名单
+ * @param {Boolean} isWhite 是否是白名单
  */
-export function mix(target, seed, whiteList) {
-  if (!Array.isArray(whiteList)) {
-    whiteList = false;
+export function mix(target, seed, list, isWhite) {
+  if (!Array.isArray(list)) {
+    list = false;
   }
+
+  var index;
 
   // Copy "all" properties including inherited ones.
   for (var prop in seed) {
     if (seed.hasOwnProperty(prop)) {
       // 检测白名单
-      if (whiteList && whiteList.indexOf(prop) === -1) continue;
+      if (list) {
+        index = list.indexOf(prop);
+
+        // 区分黑白名单
+        if (isWhite ? index === -1 : index !== -1) {
+          continue;
+        }
+      }
 
       // 在 iPhone 1 代等设备的 Safari 中，prototype 也会被枚举出来，需排除
       if (prop !== 'prototype') {
