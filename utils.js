@@ -58,7 +58,7 @@ var setPrototypeOf = Object.setPrototypeOf;
 
 // not suport setPrototypeOf
 if (!Is.isNative(setPrototypeOf)) {
-  setPrototypeOf = null;
+  setPrototypeOf = false;
 }
 
 // Object create
@@ -66,7 +66,7 @@ var objectCreate = Object.create;
 
 // not suport create
 if (!Is.isNative(objectCreate)) {
-  objectCreate = null;
+  objectCreate = false;
 }
 
 /**
