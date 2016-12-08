@@ -57,7 +57,7 @@ function TClass() {
 var setPrototypeOf = Object.setPrototypeOf;
 
 // not suport setPrototypeOf
-if (!Is.isNative(setPrototypeOf)) {
+if (!Is.native(setPrototypeOf)) {
   setPrototypeOf = false;
 }
 
@@ -65,7 +65,7 @@ if (!Is.isNative(setPrototypeOf)) {
 var objectCreate = Object.create;
 
 // not suport create
-if (!Is.isNative(objectCreate)) {
+if (!Is.native(objectCreate)) {
   objectCreate = false;
 }
 
