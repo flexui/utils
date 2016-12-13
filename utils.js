@@ -185,3 +185,28 @@ export function getComputedStyle(element, prop) {
     }
   };
 }
+
+// 模板匹配正则
+var TEMPLATERE = /{{([a-z]*)}}/gi;
+
+/**
+ * simple template
+ *
+ * @export
+ * @param {String} format
+ * @param {Object} data
+ * @returns {String}
+ * ```
+ * var tpl = '{{name}}/{{version}}';
+ * template(tpl, {name:'base', version: '1.0.0'});
+ * ```
+ */
+export function template(format, data) {
+  if (!Is.string(format)) return '';
+
+  if (!data) return format;
+
+  return format.replace(TEMPLATERE, function(all, name) {
+    return data.hasOwnProperty(name) ? data[name] : name;
+  });
+}
