@@ -190,7 +190,7 @@ export function getComputedStyle(element, prop) {
 var TEMPLATERE = /{{([a-z]*)}}/gi;
 
 /**
- * simple template
+ * template
  *
  * @export
  * @param {String} format
