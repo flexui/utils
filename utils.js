@@ -187,7 +187,7 @@ export function getComputedStyle(element, prop) {
 }
 
 // 模板匹配正则
-var TEMPLATERE = /{{([a-z]*)}}/gi;
+var TEMPLATE_RE = /{{([a-z]*)}}/gi;
 
 /**
  * template
@@ -206,7 +206,7 @@ export function template(format, data) {
 
   if (!data) return format;
 
-  return format.replace(TEMPLATERE, function(all, name) {
+  return format.replace(TEMPLATE_RE, function(all, name) {
     return data.hasOwnProperty(name) ? data[name] : name;
   });
 }
