@@ -158,6 +158,7 @@ export function getComputedStyle(element, prop) {
   return {
     /**
      * getPropertyValue
+     *
      * @param {String} prop
      */
     getPropertyValue: function(prop) {
