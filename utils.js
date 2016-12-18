@@ -1,9 +1,9 @@
 import $ from 'jquery';
 // 类型判定接口
-import * as Is from './lib/is';
+import * as Is from './lib/is.js';
 
 // 公开接口
-export * from './lib/is';
+export * from './lib/is.js';
 
 // jquery 对象
 export var win = $(window);
