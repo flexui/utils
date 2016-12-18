@@ -135,6 +135,7 @@ var originalGetComputedStyle = window.getComputedStyle;
 
 /**
  * getComputedStyle
+ *
  * @export
  * @param {HTMLElement} element
  * @param {String} prop
