@@ -212,3 +212,18 @@ export function template(format, data) {
     return data.hasOwnProperty(name) ? data[name] : name;
   });
 }
+
+// CSS unit split
+var CSS_UNIT_SPLIT_RE = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(.*)$/i;
+
+/**
+ * addCSSUnit
+ *
+ * @param {any} value
+ * @returns {String}
+ */
+export function addCSSUnit(value) {
+  var matches = CSS_UNIT_SPLIT_RE.exec(value);
+
+  return matches ? matches[1] + (matches[2] || 'px') : value;
+}
