@@ -107,7 +107,7 @@ export function inherits(subClass, superClass, properties) {
  * 高性能 apply
  *
  * @param  {Function} func
- * @param  {Any} context
+ * @param  {any} context
  * @param  {Array} args
  * call is faster than apply, optimize less than 6 args
  * https://github.com/micro-js/apply
