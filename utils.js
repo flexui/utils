@@ -1,9 +1,9 @@
 import $ from 'jquery';
 // 类型判定接口
-import * as Is from './lib/is';
+import * as Is from './lib/is.js';
 
 // 公开接口
-export * from './lib/is';
+export * from './lib/is.js';
 
 // jquery 对象
 export var win = $(window);
@@ -135,6 +135,7 @@ var originalGetComputedStyle = window.getComputedStyle;
 
 /**
  * getComputedStyle
+ *
  * @export
  * @param {HTMLElement} element
  * @param {String} prop
@@ -157,6 +158,7 @@ export function getComputedStyle(element, prop) {
   return {
     /**
      * getPropertyValue
+     *
      * @param {String} prop
      */
     getPropertyValue: function(prop) {
