@@ -4,6 +4,7 @@ import * as Is from './lib/is.js';
 
 // 公开接口
 export * from './lib/is.js';
+export * from './lib/template.js';
 
 // jquery 对象
 export var win = $(window);
@@ -188,34 +189,6 @@ export function getComputedStyle(element, prop) {
   };
 }
 
-// 模板匹配正则
-var TEMPLATE_RE = /{{([a-z]*)}}/gi;
-
-/**
- * template
- *
- * @export
- * @param {String} format
- * @param {Object} data
- * @returns {String}
- * ```
- * var tpl = '{{name}}/{{version}}';
- * template(tpl, {name:'base', version: '1.0.0'});
- * ```
- */
-export function template(format, data) {
-  if (!Is.string(format)) return '';
-
-  if (!data) return format;
-
-  return format.replace(TEMPLATE_RE, function(all, name) {
-    return data.hasOwnProperty(name) ? data[name] : name;
-  });
-}
-
-// CSS unit split
-var CSS_UNIT_SPLIT_RE = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(.*)$/i;
-
 /**
  * addCSSUnit
  *
@@ -223,7 +196,7 @@ var CSS_UNIT_SPLIT_RE = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(.*)$/i;
  * @returns {String}
  */
 export function addCSSUnit(value) {
-  var matches = CSS_UNIT_SPLIT_RE.exec(value);
+  var matches = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(.*)$/i.exec(value);
 
   return matches ? matches[1] + (matches[2] || 'px') : value;
 }
